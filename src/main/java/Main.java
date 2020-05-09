@@ -5,6 +5,7 @@ public class Main {
         Integer[] numbers = {0};
         try {
             numbers = FileOperation.readFromFile("src/main/resources/one_thousand.txt");
+            numbers = SortAlgorithm.insertSort(numbers);
             FileOperation.saveToFile("src/main/resources/sorted_one_thousand.txt", numbers);
         } catch (IOException e) {
             e.printStackTrace();
