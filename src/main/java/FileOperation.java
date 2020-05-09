@@ -10,7 +10,6 @@ public class FileOperation {
 
         File file = new File(filename);
 
-
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         while (br.ready()){
@@ -19,5 +18,16 @@ public class FileOperation {
         br.close();
 
         return numbers = contentFromFile.toArray(new Integer[0]);
+    }
+
+    public static void saveToFile(String filename, Integer[] numbers) throws IOException{
+
+            String str = "Hello";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+            for(Integer number: numbers)
+                writer.write(String.format("%d\n", number));
+
+            writer.close();
+
     }
 }

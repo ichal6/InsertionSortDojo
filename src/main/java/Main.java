@@ -5,10 +5,12 @@ public class Main {
         Integer[] numbers = {0};
         try {
             numbers = FileOperation.readFromFile("src/main/resources/one_thousand.txt");
+            FileOperation.saveToFile("src/main/resources/sorted_one_thousand.txt", numbers);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for(Integer i: numbers)
-        System.out.println(i);
+//        for(Integer i: numbers)
+//        System.out.println(i);
+
     }
 }
