@@ -5,9 +5,9 @@ public class Main {
         long timeRun = startTime();
         Integer[] numbers = {0};
         try {
-            numbers = FileOperation.readFromFile("src/main/resources/one_thousand.txt");
+            numbers = FileOperation.readFromFile(args[0]);
             numbers = SortAlgorithm.insertSort(numbers);
-            FileOperation.saveToFile("src/main/resources/sorted_one_thousand.txt", numbers);
+            FileOperation.saveToFile("sorted_" + args[0], numbers);
         } catch (IOException e) {
             e.printStackTrace();
         }
