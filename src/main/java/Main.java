@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,6 +9,25 @@ public class Main {
         withArray(args);
         System.out.println("Time for ArrayList:");
         withArrayList(args);
+        System.out.println("Time for LinkedList:");
+        withLinkedList(args);
+    }
+
+    private static void withLinkedList(String[] args){
+        long timeRun = startTime();
+        List<Integer> numbers;
+        try {
+            numbers = FileOperation.readFromFileAsLinkedList(args[0]);
+            System.out.println(String.format("time of read from file: %.0f ms", stopTime(timeRun)));
+            timeRun = startTime();
+            numbers = SortAlgorithm.insertSort(numbers);
+            System.out.println(String.format("time of sort: %.0f ms", stopTime(timeRun)));
+            timeRun = startTime();
+            FileOperation.saveToFile("sorted_" + args[0], numbers);
+            System.out.println(String.format("time of save to file: %.0f ms", stopTime(timeRun)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void withArray(String[] args){
@@ -28,7 +49,7 @@ public class Main {
 
     private static void withArrayList(String[] args){
         long timeRun = startTime();
-        ArrayList<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers;
         try {
             numbers = FileOperation.readFromFileAsArrayList(args[0]);
             System.out.println(String.format("time of read from file: %.0f ms", stopTime(timeRun)));

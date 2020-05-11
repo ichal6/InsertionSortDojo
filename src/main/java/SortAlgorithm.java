@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class SortAlgorithm {
     public static Integer[] insertSort(Integer[] array){
@@ -15,7 +16,7 @@ public class SortAlgorithm {
         return array;
     }
 
-    public static ArrayList<Integer> insertSort(ArrayList<Integer> array){
+    public static List<Integer> insertSort(List<Integer> array){
         for(int i = 1; i < array.size(); i++) {
             int key = array.get(i);
             int j = i - 1;
