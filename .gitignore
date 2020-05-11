@@ -1,4 +1,4 @@
-*.class
+src/main/java/*.class
 target
 InsertSort.iml
 .idea
