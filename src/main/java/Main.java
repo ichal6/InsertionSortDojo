@@ -1,8 +1,12 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Time for simple array:");
         withArray(args);
+        System.out.println("Time for ArrayList:");
+        withArrayList(args);
     }
 
     private static void withArray(String[] args){
@@ -10,6 +14,23 @@ public class Main {
         Integer[] numbers = {0};
         try {
             numbers = FileOperation.readFromFile(args[0]);
+            System.out.println(String.format("time of read from file: %.0f ms", stopTime(timeRun)));
+            timeRun = startTime();
+            numbers = SortAlgorithm.insertSort(numbers);
+            System.out.println(String.format("time of sort: %.0f ms", stopTime(timeRun)));
+            timeRun = startTime();
+            FileOperation.saveToFile("sorted_" + args[0], numbers);
+            System.out.println(String.format("time of save to file: %.0f ms", stopTime(timeRun)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void withArrayList(String[] args){
+        long timeRun = startTime();
+        ArrayList<Integer> numbers = new ArrayList<>();
+        try {
+            numbers = FileOperation.readFromFileAsArrayList(args[0]);
             System.out.println(String.format("time of read from file: %.0f ms", stopTime(timeRun)));
             timeRun = startTime();
             numbers = SortAlgorithm.insertSort(numbers);

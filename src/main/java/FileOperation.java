@@ -58,4 +58,13 @@ public class FileOperation {
             writer.close();
 
     }
+
+    public static void saveToFile(String filename, List<Integer> numbers) throws IOException{
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+        for(Integer number: numbers)
+            writer.write(String.format("%d\n", number));
+
+        writer.close();
+
+    }
 }
