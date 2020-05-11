@@ -2,6 +2,10 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        withArray(args);
+    }
+
+    private static void withArray(String[] args){
         long timeRun = startTime();
         Integer[] numbers = {0};
         try {
